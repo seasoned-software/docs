@@ -48,6 +48,18 @@ install:
 
 These packages are installed before running the `seasoned-software.sh` build script and again before running any of the resulting fuzz-test binaries.
 
+## Testing your configs locally
+
+You can test your `seasoned-software.sh` build script and `seasoned-software.yaml` config locally using our provided [docker build image](https://hub.docker.com/r/seasonedsoftware/builder/). You will need a modern docker installation (we tested it with 18.03.1-ce).
+
+Inside your code repository (where the `seasoned-software.sh` build script lives) run:
+```sh
+> wget https://raw.githubusercontent.com/seasoned-software/docs/master/local-checks/SeasonedSoftwareDockerfile
+> docker build -f SeasonedSoftwareDockerfile .
+```
+
+If the image builds succesfully, your config is likely working correctly. You can check that you get a line similar to `/binaries/YOUR_BINARY: OK` for every one of your binaries, at the end of the build.
+
 ## Setting up the Seasoned Software project
 
 Once your fuzz-tests are ready to be build and uploaded into the service, you need to create a new project on the service website, so it knows where to fetch your code from.
