@@ -1,0 +1,22 @@
+FROM seasonedsoftware/builder
+
+RUN mkdir /src /src-config /binaries && chown user:user /src /src-config /binaries
+COPY --chown=user:user . /src/
+
+RUN [ ! -f /src/seasoned-software.yaml ] || \
+  (runtime-setup /src/seasoned-software.yaml && cp /src/seasoned-software.yaml /src-config/)
+
+
+USER user
+RUN cd /src && ./seasoned-software.sh
+
+
+FROM seasonedsoftware/builder
+
+COPY --from=0 /src-config /src-config
+RUN [ ! -f /src-config/seasoned-software.yaml ] || runtime-setup /src-config/seasoned-software.yaml
+
+COPY --from=0 /binaries /binaries
+COPY --from=0 /usr/bin/sanity-check-binaries /usr/bin/sanity-check-binaries
+
+RUN /usr/bin/sanity-check-binaries /binaries
