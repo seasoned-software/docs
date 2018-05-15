@@ -11,7 +11,7 @@ If you need to add a fuzz-test to an existing project, please refer to the [Carg
 For your fuzz-test to run inside the Seasoned Software service, the service needs to know how to build the fuzz targets for your project. You let it know by adding a build script named `seasoned-software.sh` to the root of your repository.
 
 This script should:
-1. Download and build needed dependencies not manged by `cargo` (if any).
+1. Download and build needed build-dependencies not manged by `cargo` (if any).
 1. Use the provided rust and Clang compilers to build the code and the relevant fuzz-tests.
 1. Invoke the `upload-binary` command-line utility available on our build machines to upload the fuzz-test binaries into our service.
 
@@ -32,6 +32,21 @@ EXE="$(find fuzz/target -iname target_1 -executable)"
 # Upload the executable for the fuzz target
 upload-binary "$EXE"
 ```
+## Build and runtime dependencies
+
+If needed, you can get us to install system libraries for use during building or when the fuzzer is running later on. You can ask for packages available in the `apt-get` package manager.
+
+To use this feature, you add an extra config file named `seasoned-software.yaml` to your repository, next to your `seasoned-software.sh` build script.
+
+Here is an example config file that asks for installation the sqlite3 and libsqlite3-dev packages:
+```sh
+install:
+  apt-get:
+  - sqlite3
+  - libsqlite3-dev
+```
+
+These packages are installed before running the `seasoned-software.sh` build script and again before running any of the resulting fuzz-test binaries.
 
 ## Setting up the Seasoned Software project
 
