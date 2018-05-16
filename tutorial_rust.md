@@ -54,8 +54,8 @@ You can test your `seasoned-software.sh` build script and `seasoned-software.yam
 
 Inside your code repository (where the `seasoned-software.sh` build script lives) run:
 ```sh
-> wget https://raw.githubusercontent.com/seasoned-software/docs/master/local-checks/SeasonedSoftwareDockerfile
-> docker build -f SeasonedSoftwareDockerfile .
+wget https://raw.githubusercontent.com/seasoned-software/docs/master/local-checks/SeasonedSoftwareDockerfile
+docker build -f SeasonedSoftwareDockerfile .
 ```
 
 If the image builds succesfully, your config is likely working correctly. You can check that you get a line similar to `/binaries/YOUR_BINARY: OK` for every one of your binaries, at the end of the build.
