@@ -24,7 +24,7 @@ For example, a `seasoned-software.sh` script may look like:
 rustup override set nightly
 
 # Build the fuzz target target_1 in release mode by asking it to print its help menu
-cargo fuzz run target_1 --release -- -help=1
+cargo fuzz run target_1 --release -- -runs=1
 
 # Find the executable for the fuzz target
 EXE="$(find fuzz/target -iname target_1 -executable)"
