@@ -4,7 +4,7 @@
 
 Before beginning on this tutorial you will need a Rust project with at least one fuzz-test that can be used with Cargo-fuzz.
 
-If you need to add a fuzz-test to an existing project, please refer to the [Cargo-fuzz tutorial](https://rust-fuzz.github.io/book/cargo-fuzz/tutorial.html).
+If you need to add a fuzz-test to an existing project, please refer to the [Cargo-fuzz tutorial](https://rust-fuzz.github.io/book/cargo-fuzz).
 
 ## Building your fuzz-tests with Seasoned Software
 
