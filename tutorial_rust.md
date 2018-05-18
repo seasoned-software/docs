@@ -23,11 +23,14 @@ For example, a `seasoned-software.sh` script may look like:
 # Cargo-fuzz needs nightly rust, so switch this project to nightly
 rustup override set nightly
 
+# Name of the fuzz target
+FUZZ_TARGET=target_1
+
 # Build the fuzz target target_1 in release mode by asking it to print its help menu
-cargo fuzz run target_1 --release -- -runs=1
+cargo fuzz run $FUZZ_TARGET --release -- -runs=1
 
 # Find the executable for the fuzz target
-EXE="$(find fuzz/target -iname target_1 -executable)"
+EXE="$(find fuzz/target -iname $FUZZ_TARGET -executable)"
 
 # Upload the executable for the fuzz target
 upload-binary "$EXE"
