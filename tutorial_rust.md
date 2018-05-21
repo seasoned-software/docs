@@ -23,6 +23,9 @@ For example, a `seasoned-software.sh` script may look like:
 # Cargo-fuzz needs nightly rust, so switch this project to nightly
 rustup override set nightly
 
+# Cleanout any old build artifacts
+(cd fuzz && cargo clean)
+
 # Name of the fuzz target
 FUZZ_TARGET=target_1
 
