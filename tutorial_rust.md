@@ -33,7 +33,7 @@ FUZZ_TARGET=target_1
 cargo fuzz run $FUZZ_TARGET --release -- -runs=0
 
 # Find the executable for the fuzz target
-EXE="$(find fuzz/target -iname $FUZZ_TARGET -executable)"
+EXE="$(find fuzz/target -name $FUZZ_TARGET -executable)"
 
 # Upload the executable for the fuzz target
 upload-binary "$EXE"
