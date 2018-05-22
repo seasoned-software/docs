@@ -29,7 +29,7 @@ rustup override set nightly
 # Name of the fuzz target
 FUZZ_TARGET=target_1
 
-# Build the fuzz target in release mode by asking it to print its help menu
+# Build the fuzz target in release mode by asking it to run it for 0 iterations
 cargo fuzz run $FUZZ_TARGET --release -- -runs=0
 
 # Find the executable for the fuzz target
