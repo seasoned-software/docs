@@ -11,7 +11,7 @@ If you need to add a fuzz-test to an existing project, please refer to the [Carg
 For your fuzz-test to run inside the Seasoned Software service, the service needs to know how to build the fuzz targets for your project. You let it know by adding a build script named `seasoned-software.sh` to the root of your repository.
 
 This script should:
-1. Download and build needed build-dependencies not manged by `cargo` (if any).
+1. Download and build needed build-dependencies not managed by `cargo` (if any).
 1. Use the provided rust and Clang compilers to build the code and the relevant fuzz-tests.
 1. Invoke the `upload-binary` command-line utility available on our build machines to upload the fuzz-test binaries into our service.
 
