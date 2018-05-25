@@ -20,6 +20,10 @@ For example, a `seasoned-software.sh` script may look like:
 ```.sh
 #!/bin/bash
 
+# Override provided compiler flags, as Cargo-fuzz sets its own.
+export CFLAGS=
+export CXXFLAGS=
+
 # Cargo-fuzz needs nightly rust, so switch this project to nightly
 rustup override set nightly
 
